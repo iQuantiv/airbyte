@@ -3,6 +3,8 @@ FROM python:3.9-slim as base
 RUN apt-get upgrade \
     && pip install --upgrade pip
 
+RUN apt install nettools
+
 WORKDIR /home/octavia-cli
 COPY . ./
 
@@ -14,5 +16,5 @@ USER octavia-cli
 WORKDIR /home/octavia-project
 ENTRYPOINT ["octavia"]
 
-LABEL io.airbyte.version=0.40.32
+LABEL io.airbyte.version=0.42.1
 LABEL io.airbyte.name=airbyte/octavia-cli
